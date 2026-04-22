@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@400;600&display=swap");
+
+/* ============================================
+   CSS Variables — Google Minimalist Theme
+   ============================================ */
+:root {
+    --bg-page: #ffffff;
+    --bg-sidebar: #f8f9fa;
+    --bg-hover: #f1f3f4;
+
+    --text-primary: #202124; /* Google's standard dark gray */
+    --text-secondary: #5f6368; /* Muted gray for labels */
+    --text-link: #1a73e8; /* Google Blue */
+
+    --border: #dadce0;
+    --accent: #1a73e8;
+    --accent-dark: #174ea6;
+
+    --success: #1e8e3e;
+    --danger: #d93025;
+
+    --font-main: "Roboto", "Segoe UI", Tahoma, sans-serif;
+    --font-heading: "Open Sans", sans-serif;
+
+    --radius: 8px; /* Softer, more modern corners */
+    --radius-pill: 24px;
+    --shadow-sm:
+        0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+/* ============================================
+   Base
+   ============================================ */
+body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font-main);
+    margin: 0;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ============================================
+   Header & Navigation
+   ============================================ */
+header {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h1 {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 8px 16px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    border-radius: var(--radius);
+    transition: background 0.2s;
+}
+
+nav a:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+nav a.active {
+    color: var(--accent);
+    background-color: #e8f0fe;
+}
+
+/* ============================================
+   Main Content
+   ============================================ */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+/* ============================================
+   Tables (Clean & Spaced)
+   ============================================ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+thead {
+    background-color: var(--bg-sidebar);
+    border-bottom: 2px solid var(--border);
+}
+
+thead th {
+    text-align: left;
+    padding: 12px 16px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tbody tr {
+    border-bottom: 1px solid var(--border);
+}
+
+tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+tbody td {
+    padding: 16px;
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   Buttons (Material Style)
+   ============================================ */
+.btn,
+td a,
+p > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 24px;
+    background-color: var(--accent);
+    color: #fff;
+    border-radius: 4px; /* Google uses slightly sharper buttons now */
+    font-weight: 500;
+    font-size: 0.875rem;
+    border: 1px solid transparent;
+    transition:
+        box-shadow 0.2s,
+        background-color 0.2s;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3);
+}
+
+.btn:hover,
+td a:hover {
+    background-color: var(--accent-dark);
+    box-shadow: 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    text-shadow: none;
+}
+
+/* White/Outline button variant */
+p > a[href="index.php"] {
+    background-color: #fff;
+    color: var(--accent);
+    border: 1px solid var(--border);
+    box-shadow: none;
+}
+
+p > a[href="index.php"]:hover {
+    background-color: #f1f3f4;
+}
+
+/* ============================================
+   Cards (Fauna)
+   ============================================ */
+.fauna-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.fauna-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: box-shadow 0.3s;
+}
+
+.fauna-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.fauna-card img {
+    border-bottom: 1px solid var(--border);
+}
+
+/* ============================================
+   Forms
+   ============================================ */
+input[type="text"],
+input[type="email"],
+textarea,
+select {
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+input:focus {
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: inset 0 0 0 1px var(--accent);
+}
+
+footer {
+    margin-top: 4rem;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-align: center;
+}

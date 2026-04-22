@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo isset($pageTitle) ? e($pageTitle) . ' - ' : ''; ?>Hydrothermal Vent Database</title>
+    <title><?php echo isset($pageTitle)
+        ? e($pageTitle) . " - "
+        : ""; ?>Hydrothermal Vent Database</title>
     <link rel="stylesheet" href="css/reset.css">
-    <!-- Students: Add your CSS stylesheet link here -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
