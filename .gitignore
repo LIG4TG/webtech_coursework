@@ -1,0 +1,29 @@
+# Database credentials - never commit these
+includes/config.php
+
+# WAMP/local environment files
+*.log
+*.pid
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Databasesy
+repomix-output.xml
+database/
+
+# Uploaded files (if you add file upload functionality later)
+uploads/
+
+# Composer (if you add PHP dependencies later)
+vendor/
+composer.lock
