@@ -14,7 +14,7 @@
         <h1>Hydrothermal Vent Database</h1>
         <nav>
             <a href="index.php">Home</a>
-            <!-- Students: Add more navigation links here -->
+            <a href="contact.php">Contact Us</a>
         </nav>
     </header>
     <main>
