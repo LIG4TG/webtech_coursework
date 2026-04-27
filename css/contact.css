@@ -1,0 +1,267 @@
+/* =========================================================
+   contact.css — Contact page styles
+   Follows the Google Material-inspired theme of the project
+   ========================================================= */
+
+/* ── Wrapper ─────────────────────────────────────────────── */
+.contact-wrapper {
+    max-width: 680px;
+    margin: 2.5rem auto;
+    padding: 0 1rem;
+}
+
+/* ── Page heading ────────────────────────────────────────── */
+.contact-header {
+    margin-bottom: 2rem;
+}
+
+.contact-header h2 {
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: #202124;
+    margin-bottom: 0.5rem;
+}
+
+.contact-header p {
+    color: #5f6368;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ── Error banner (server-side summary) ──────────────────── */
+.error-banner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #fce8e6;
+    border: 1px solid #f28b82;
+    border-radius: 8px;
+    padding: 0.875rem 1rem;
+    margin-bottom: 1.5rem;
+    color: #c5221f;
+    font-size: 0.9rem;
+}
+
+.error-banner svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+/* ── Two-column grid for name + email ────────────────────── */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1.25rem;
+}
+
+@media (max-width: 520px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ── Field groups ────────────────────────────────────────── */
+.field-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+.field-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #3c4043;
+    margin-bottom: 0.4rem;
+}
+
+.required {
+    color: #d93025;
+    margin-left: 2px;
+}
+
+/* ── Inputs and textarea ─────────────────────────────────── */
+.field-group input,
+.field-group textarea {
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    padding: 0.625rem 0.875rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: #202124;
+    background: #fff;
+    transition:
+        border-color 0.15s,
+        box-shadow 0.15s;
+    outline: none;
+    resize: vertical;
+}
+
+.field-group input::placeholder,
+.field-group textarea::placeholder {
+    color: #9aa0a6;
+}
+
+.field-group input:focus,
+.field-group textarea:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+/* ── Error state ─────────────────────────────────────────── */
+.field-group.has-error input,
+.field-group.has-error textarea {
+    border-color: #d93025;
+}
+
+.field-group.has-error input:focus,
+.field-group.has-error textarea:focus {
+    box-shadow: 0 0 0 2px rgba(217, 48, 37, 0.2);
+}
+
+.field-error {
+    font-size: 0.8rem;
+    color: #d93025;
+    margin-top: 0.3rem;
+    min-height: 1.1em; /* reserve space so layout doesn't jump */
+}
+
+/* ── Form footer ─────────────────────────────────────────── */
+.form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.required-note {
+    font-size: 0.8rem;
+    color: #80868b;
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition:
+        background 0.15s,
+        box-shadow 0.15s;
+}
+
+.btn-primary {
+    background: #1a73e8;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #1765cc;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:active {
+    background: #185abc;
+}
+
+.btn-primary:disabled {
+    background: #a8c7fa;
+    cursor: not-allowed;
+}
+
+.btn-outlined {
+    background: transparent;
+    color: #1a73e8;
+    border: 1px solid #dadce0;
+    margin-top: 1.25rem;
+}
+
+.btn-outlined:hover {
+    background: #f0f4ff;
+}
+
+.btn-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* ── Success card ────────────────────────────────────────── */
+.success-card {
+    background: #fff;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.success-icon {
+    color: #1e8e3e;
+    margin-bottom: 1rem;
+}
+
+.success-icon svg {
+    width: 56px;
+    height: 56px;
+}
+
+.success-card h2 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #202124;
+    margin-bottom: 0.5rem;
+}
+
+.success-card > p {
+    color: #5f6368;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+/* ── Submission summary ──────────────────────────────────── */
+.submission-summary {
+    background: #f8f9fa;
+    border: 1px solid #e8eaed;
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin: 1.25rem auto 0;
+    max-width: 480px;
+    text-align: left;
+}
+
+.summary-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 0.25rem 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #e8eaed;
+}
+
+.summary-row:last-child {
+    border-bottom: none;
+}
+
+.summary-row dt {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #80868b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-top: 2px;
+}
+
+.summary-row dd {
+    font-size: 0.9rem;
+    color: #3c4043;
+    line-height: 1.5;
+    word-break: break-word;
+}

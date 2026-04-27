@@ -1,0 +1,127 @@
+/**
+ * contact.js — Client-side form validation
+ * SET08101 Web Technologies Coursework
+ *
+ * Validates the contact form before submission.
+ * PHP server-side validation provides a second layer of security.
+ */
+
+(function () {
+    'use strict';
+
+    const form = document.getElementById('contactForm');
+    if (!form) return; // Guard: only run on the contact page
+
+    // ── Field references ──────────────────────────────────────
+    const fields = {
+        name:    { el: document.getElementById('name'),    error: document.getElementById('name-error') },
+        email:   { el: document.getElementById('email'),   error: document.getElementById('email-error') },
+        subject: { el: document.getElementById('subject'), error: document.getElementById('subject-error') },
+        message: { el: document.getElementById('message'), error: document.getElementById('message-error') },
+    };
+
+    // ── Validation rules ──────────────────────────────────────
+    const rules = {
+        name(value) {
+            if (!value.trim())         return 'Please enter your name.';
+            if (value.trim().length < 2) return 'Name must be at least 2 characters.';
+            return '';
+        },
+        email(value) {
+            if (!value.trim()) return 'Please enter your email address.';
+            // Basic email pattern check
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(value.trim())) return 'Please enter a valid email address.';
+            return '';
+        },
+        subject(value) {
+            if (!value.trim()) return 'Please enter a subject.';
+            return '';
+        },
+        message(value) {
+            if (!value.trim())           return 'Please enter your message.';
+            if (value.trim().length < 10) return 'Message must be at least 10 characters.';
+            return '';
+        },
+    };
+
+    // ── Helpers ───────────────────────────────────────────────
+
+    /**
+     * Show or clear an error on a field.
+     * @param {string} fieldName
+     * @param {string} message  - Empty string clears the error.
+     */
+    function setError(fieldName, message) {
+        const { el, error } = fields[fieldName];
+        const group = el.closest('.field-group');
+
+        error.textContent = message;
+
+        if (message) {
+            group.classList.add('has-error');
+        } else {
+            group.classList.remove('has-error');
+        }
+    }
+
+    /**
+     * Validate a single field and display the result.
+     * @param {string} fieldName
+     * @returns {boolean} true if valid
+     */
+    function validateField(fieldName) {
+        const value = fields[fieldName].el.value;
+        const message = rules[fieldName](value);
+        setError(fieldName, message);
+        return message === '';
+    }
+
+    // ── Live validation (on blur) ─────────────────────────────
+    // Validate each field when the user leaves it (not while typing,
+    // which feels intrusive for a first visit).
+    Object.keys(fields).forEach(function (name) {
+        fields[name].el.addEventListener('blur', function () {
+            validateField(name);
+        });
+
+        // Once a field has been touched and shown an error, re-validate
+        // on input so the error clears as soon as the user fixes it.
+        fields[name].el.addEventListener('input', function () {
+            const group = fields[name].el.closest('.field-group');
+            if (group.classList.contains('has-error')) {
+                validateField(name);
+            }
+        });
+    });
+
+    // ── Submit handler ────────────────────────────────────────
+    form.addEventListener('submit', function (event) {
+        // Validate all fields
+        let isValid = true;
+        Object.keys(fields).forEach(function (name) {
+            if (!validateField(name)) {
+                isValid = false;
+            }
+        });
+
+        if (!isValid) {
+            event.preventDefault(); // Stop form submission
+
+            // Move focus to the first field with an error
+            const firstErrorGroup = form.querySelector('.field-group.has-error');
+            if (firstErrorGroup) {
+                firstErrorGroup.querySelector('input, textarea').focus();
+            }
+            return;
+        }
+
+        // Visually disable the submit button to prevent double-submission
+        const btn = document.getElementById('submitBtn');
+        if (btn) {
+            btn.disabled = true;
+            btn.querySelector('.btn-text').textContent = 'Sending…';
+        }
+    });
+
+})();
